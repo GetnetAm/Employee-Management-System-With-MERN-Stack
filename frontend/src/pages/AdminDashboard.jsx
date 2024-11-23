@@ -1,5 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext"
+import AdminSidebar from "../components/dashboard/AdminSidebar";
+import Navbar from "../components/dashboard/Navbar";
+// import AdminSummary from "../components/dashboard/AdminSummary";
 
 function AdminDashboard() {
 
@@ -15,8 +18,13 @@ function AdminDashboard() {
     }
 
     return (
-        <div>
-            <h1>Admin Dashbaord<span className="text-3xl text-cyan-600 bg-orange-400">{user.name}</span> </h1>
+        <div className="flex">
+        <AdminSidebar />
+        <div className="flex-1 ml-64 bg-gray-100 h-screen">
+            <Navbar />
+            {/* <AdminSummary /> */}
+            <Outlet />
+        </div>
             
         </div>
     )
