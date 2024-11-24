@@ -4,8 +4,10 @@ const  mongoose = require("mongoose");
 const cookiesParser= require("cookie-parser")
 require("dotenv").config()
 const app = express();
+
 const authRouter= require("./routes/auth")
-// const router= require("./routes/index")
+// const departmentRouter= require("./routes/departmentRoute")
+const departmentRouter= require("./routes/departmentRoute")
 
 
 
@@ -21,11 +23,9 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/api/auth', authRouter)
+app.use('/api/department', departmentRouter)
 
 
-app.get("/", (req, res) => {
-   res.send("Hello Ethiopia")
-   });
 
 
 const PORT = process.env.PORT || 3000;
