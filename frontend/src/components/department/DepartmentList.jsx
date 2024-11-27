@@ -3,6 +3,7 @@ import DataTable from "react-data-table-component"
 import { columns, DepartmenuButtons } from "../../utils/DepartmentHelper"
 import { useEffect, useState } from "react"
 import axios from "axios";
+import Loader from "../loader/Loader";
 
 function DepartmentList() {
     const [departments, setDepertments]= useState([]);
@@ -62,7 +63,7 @@ function DepartmentList() {
     }, [])
     return (
         <>
-        {depLoading ?<div>Loading......</div>: 
+        {depLoading ? <div className="m-12 text-center justify-center"><Loader /></div> : 
       
         <div className="p-5">
            <div className="text-center">

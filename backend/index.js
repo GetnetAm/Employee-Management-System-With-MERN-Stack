@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const cors= require('cors');
 const  mongoose = require("mongoose");
 const cookiesParser= require("cookie-parser")
@@ -8,6 +9,9 @@ const app = express();
 const authRouter= require("./routes/auth")
 // const departmentRouter= require("./routes/departmentRoute")
 const departmentRouter= require("./routes/departmentRoute")
+const employeeRoute= require("./routes/employeeRoute")
+const salaryRoute= require("./routes/salaryRoute")
+const leaveRoute= require("./routes/leaveRoute")
 
 
 
@@ -20,10 +24,16 @@ app.use(cookiesParser());
 // }))
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use(express.static('public/uploads'))
 
 
 app.use('/api/auth', authRouter)
 app.use('/api/department', departmentRouter)
+app.use("/api/employee", employeeRoute)
+app.use("/api/salary", salaryRoute)
+app.use("/api/leaves", leaveRoute)
 
 
 
